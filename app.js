@@ -5,9 +5,11 @@ const jwt = require("jsonwebtoken");
 
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const dbPath = path.join(__dirname, "financepeer.db");
 let db = null;
@@ -18,7 +20,7 @@ const initializeDBAndServer = async () => {
       filename: dbPath,
       driver: sqlite3.Database,
     });
-    app.listen(3000, () => {
+    app.listen(process.env.PORT || 3000, () => {
       console.log("Server is running at http://localhost:3000/");
     });
   } catch (error) {
