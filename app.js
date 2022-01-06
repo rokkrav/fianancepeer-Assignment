@@ -102,4 +102,27 @@ app.post("/login/", async (request, response) => {
   }
 });
 
+// POSTLIST
+
+app.post("/posts/", async (request, response) => {
+  const postDetails = request.body;
+
+  const values = postDetails.map(
+    (eachPost) =>
+      `('${eachPost.userId}', ${eachPost.id}, '${eachPost.title}','${eachPost.body}')`
+  );
+
+  const valuesString = values.join(",");
+
+  const addBookQuery = `
+    INSERT INTO
+      posts (user_id,id,title,body)
+    VALUES
+       ${valuesString};`;
+
+  const dbResponse = await db.run(addBookQuery);
+  const postId = dbResponse.lastID;
+  response.send({ postId: postId });
+});
+
 module.exports = app;
