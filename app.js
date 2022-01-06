@@ -109,7 +109,7 @@ app.post("/posts/", async (request, response) => {
 
   const values = postDetails.map(
     (eachPost) =>
-      `('${eachPost.userId}', ${eachPost.id}, '${eachPost.title}','${eachPost.body}')`
+      `(${eachPost.user_id}, ${eachPost.id}, '${eachPost.title}','${eachPost.body}')`
   );
 
   const valuesString = values.join(",");
