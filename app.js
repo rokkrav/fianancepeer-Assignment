@@ -104,7 +104,7 @@ app.post("/login/", async (request, response) => {
 
 // POSTLIST
 
-app.post("/posts/", async (request, response) => {
+app.post("/", async (request, response) => {
   const postDetails = request.body;
 
   const values = postDetails.map(
@@ -125,4 +125,12 @@ app.post("/posts/", async (request, response) => {
   response.send({ postId: postId });
 });
 
+//GET POSTS
+app.get("/posts", async (request, response) => {
+  const getPostsQuery = `
+        SELECT * FROM posts ORDER BY id
+    `;
+  const dbResponse = await db.all(getPostsQuery);
+  response.send(dbResponse);
+});
 module.exports = app;

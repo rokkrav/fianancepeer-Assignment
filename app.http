@@ -17,18 +17,21 @@ Content-Type: application/json
     "password": "ravi@456"
 }
 
+###
+
+GET http://localhost:3000/posts
 
 
 
 
 ###
 
-POST http://localhost:3000/posts/
+POST http://localhost:3000/
 Content-Type: application/json
 
-{
- [
-{
+
+  [
+  {
     "user_id": 1,
     "id": 1,
     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -69,7 +72,6 @@ Content-Type: application/json
     "id": 7,
     "title": "magnam facilis autem",
     "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
-  },
-  
-]
-}
+  }
+ ]
+
